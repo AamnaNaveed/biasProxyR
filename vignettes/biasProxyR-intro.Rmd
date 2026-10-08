@@ -12,3 +12,61 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
 )
+```
+
+```{r setup, message=FALSE, warning=FALSE}
+library(biasProxyR)
+```
+
+## The Problem: Sampling Bias in Data-Poor Regions
+
+When building Species Distribution Models (SDMs), researchers need "background" points to represent the available environment. In data-rich regions, "target-group backgrounds" are used to cancel out sampling bias. 
+
+However, in data-poor regions (like many parts of the Global South), target-group data does not exist. Randomly sampling background points causes the model to learn "where the roads are" rather than "where the species lives." 
+
+## The Solution: `biasProxyR`
+
+`biasProxyR` solves this by using open-source infrastructure data (like OpenStreetMap road networks) to create a "Sampling Effort Proxy" surface. This allows researchers to sample background points that mathematically match the geographic bias of their occurrence data.
+
+## Step 1: Generate the Effort Surface
+
+First, we generate a sampling effort proxy for a country. For this tutorial, we will use Luxembourg because it is small and processes quickly.
+
+```{r generate-effort, message=TRUE, cache=TRUE}`
+# Generate a 1000m resolution effort surface for Luxembourg
+effort <- generate_effort_surface("Luxembourg", resolution = 1000)
+
+# Plot the surface
+terra::plot(effort, main = "Sampling Effort Proxy - Luxembourg", col = terrain.colors(50))
+```
+
+*Brighter areas indicate higher probability of human sampling effort (e.g., near cities and major highways).*
+
+## Step 2: Sample Bias-Aware Background Points
+
+Instead of sampling background points randomly, we use the effort surface to weight our sampling. This ensures our background points have the same geographic bias as typical GBIF occurrence data.
+
+```{r sample-bg, message=TRUE, cache=TRUE}`
+# Sample 2,000 bias-aware background points
+bg_points <- sample_bias_aware_background(effort, n_points = 2000)
+
+# Plot the points over the effort surface
+terra::plot(effort, main = "Bias-Aware Background Points", col = terrain.colors(50))
+plot(bg_points, add = TRUE, col = "red", pch = 16, cex = 0.5)
+```
+
+## Step 3: Diagnose Your Own Data
+
+If you already have occurrence data, you can use the diagnostic tool to see how biased it is before you even run an SDM.
+
+```{r diagnose, message=TRUE, cache=TRUE}`
+# Run the diagnostic on our sampled points (pretending they are occurrence data)
+diagnostic_results <- diagnose_sampling_bias(bg_points, effort)
+
+# View the calculated bias score
+print(diagnostic_results$bias_score_percent)
+```
+
+## Next Steps
+
+Now that you have bias-aware background points, you can feed them directly into your favorite SDM package (like `maxnet`, `biomod2`, or `sdm`) alongside your true presence data to build ecologically realistic models!
