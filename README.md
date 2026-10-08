@@ -2,7 +2,6 @@
 
 **Generating Sampling Effort Proxies for Species Distribution Modeling in Data-Poor Regions.**
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.XXXXXXX.svg)](https://doi.org/10.5281/zenodo.XXXXXXX)
 
 ## The Problem
 
