@@ -1,6 +1,11 @@
-^biasProxyR\.Rproj$
-^\.Rproj\.user$
-^LICENSE\.md$
+^\.git$
+^\.github$
+^\.vscode$
 ^luxembourg_map\.png$
 ^bias_aware_bg_points\.png$
 ^diagnostic_plot\.png$
+^README\.Rmd$
+^.*\.Rproj$
+^\.Rproj\.user$
+^LICENSE\.md$
+^biasProxyR\.Rproj$

@@ -22,8 +22,8 @@
 diagnose_sampling_bias <- function(occurrences, effort_surface) {
 
   # 1. Validate inputs
-  if (!inherits(occurrences, "sf")) stop("occurrences must be an sf object.")
-  if (!inherits(effort_surface, "SpatRaster")) stop("effort_surface must be a SpatRaster.")
+  if (!inherits(occurrences, "sf")) stop("occurrences must be an sf object.", call. = FALSE)
+  if (!inherits(effort_surface, "SpatRaster")) stop("effort_surface must be a SpatRaster.", call. = FALSE)
 
   # 2. Extract effort values at occurrence points
   message("Extracting effort values at occurrence points...")

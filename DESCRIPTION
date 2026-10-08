@@ -1,19 +1,24 @@
 Package: biasProxyR
-Title: What the Package Does (One Line, Title Case)
+Title: BiasProxyR: Sampling Effort Proxies for SDMs
 Version: 0.0.0.9000
 Authors@R: 
-    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"))
-Description: What the package does (one paragraph).
+    person("Aamna", "Naveed", , "naamna588@gmail.com", role = c("aut", "cre"))
+Description: Addresses geographic sampling bias in Species Distribution 
+    Models (SDMs) for data-poor regions. It generates sampling effort proxies 
+    using open-source infrastructure data, allowing researchers to sample 
+    bias-aware background points. This prevents models from learning 
+    sampling artifacts instead of true ecological niches.
 License: MIT + file LICENSE
-Config/roxygen2/version: 8.1.0
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-Suggests: 
-    knitr,
-    rmarkdown
+RoxygenNote: 7.3.2
 VignetteBuilder: knitr
 Imports: 
     osmdata,
     rnaturalearth,
     sf,
     terra
+Suggests: 
+    knitr,
+    rmarkdown,
+    testthat (>= 3.0.0)
