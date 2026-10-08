@@ -19,9 +19,10 @@ For example, in Pakistan, approximately 75% of GBIF plant records are concentrat
 
 ## Core Functions
 
-*   `generate_effort_surface()`: Downloads road density and terrain data for a given country and combines them into a single raster representing the probability of human sampling effort.
-*   *(Coming soon)* `sample_bias_aware_background()`: Samples background points for SDMs proportionally to the effort surface, effectively canceling out geographic bias.
-*   *(Coming soon)* `diagnose_sampling_bias()`: A quick, publication-ready diagnostic tool that plots GBIF points over the effort surface and calculates a "Bias Correlation Score."
+*   `generate_effort_surface()`: Downloads road density data for a given country and combines it into a single raster representing the probability of human sampling effort.
+*   `sample_bias_aware_background()`: Samples background points for SDMs proportionally to the effort surface, effectively canceling out geographic bias in data-poor regions.
+*   `diagnose_sampling_bias()`: A publication-ready diagnostic tool that plots occurrence points over the effort surface and calculates a "Bias Correlation Score" to warn users of severe sampling skew.
+
 
 ## Installation
 
