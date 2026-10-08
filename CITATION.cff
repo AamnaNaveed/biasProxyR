@@ -1,0 +1,16 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "biasProxyR: Sampling Effort Proxies for Species Distribution Modeling"
+version: 0.0.0.9000
+date-released: 2026-10-08
+authors:
+  - family-names: Naveed
+    given-names: Aamna
+    orcid: "https://orcid.org/0009-0001-3371-1066"
+    email: naveedaamna4@gmail.com
+repository-code: "https://github.com/AamnaNaveed/biasProxyR"
+license: MIT
+abstract: >
+  An R package for generating sampling effort proxies and bias-aware background
+  points for Species Distribution Models (SDMs) in data-poor regions, addressing
+  geographic sampling bias using open-source infrastructure data.
