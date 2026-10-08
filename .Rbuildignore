@@ -9,3 +9,5 @@
 ^\.Rproj\.user$
 ^LICENSE\.md$
 ^biasProxyR\.Rproj$
+ ^cran-comments\.md$
+^cran-comments\.md$

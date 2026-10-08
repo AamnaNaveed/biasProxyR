@@ -1,6 +1,6 @@
 Package: biasProxyR
-Title: BiasProxyR: Sampling Effort Proxies for SDMs
-Version: 0.0.0.9000
+Title: Sampling Effort Proxies for Species Distribution Models
+Version: 0.1.0
 Authors@R: 
     person("Aamna", "Naveed", , "naamna588@gmail.com", role = c("aut", "cre"))
 Description: Addresses geographic sampling bias in Species Distribution 
