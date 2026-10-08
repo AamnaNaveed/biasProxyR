@@ -3,3 +3,5 @@
 export(diagnose_sampling_bias)
 export(generate_effort_surface)
 export(sample_bias_aware_background)
+importFrom(grDevices,terrain.colors)
+importFrom(stats,quantile)

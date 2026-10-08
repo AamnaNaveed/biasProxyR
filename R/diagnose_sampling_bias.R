@@ -9,6 +9,8 @@
 #'
 #' @return A list containing the bias score (percentage) and a diagnostic message.
 #' @export
+#' @importFrom stats quantile
+#' @importFrom grDevices terrain.colors
 #'
 #' @examples
 #' \dontrun{
@@ -26,7 +28,7 @@ diagnose_sampling_bias <- function(occurrences, effort_surface) {
   # 2. Extract effort values at occurrence points
   message("Extracting effort values at occurrence points...")
   occ_vect <- terra::vect(occurrences)
-  effort_values <- terra::extract(effort_surface, occ_vect)[, 2] # 2nd column is the value
+  effort_values <- terra::extract(effort_surface, occ_vect)[, 2]
 
   # 3. Calculate Bias Score (% of points in the top 25% of effort)
   threshold <- stats::quantile(effort_values, 0.75, na.rm = TRUE)

@@ -1,2 +1,6 @@
 ^biasProxyR\.Rproj$
 ^\.Rproj\.user$
+^LICENSE\.md$
+^luxembourg_map\.png$
+^bias_aware_bg_points\.png$
+^diagnostic_plot\.png$
