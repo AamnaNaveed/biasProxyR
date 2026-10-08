@@ -29,7 +29,7 @@ diagnose_sampling_bias <- function(occurrences, effort_surface) {
   effort_values <- terra::extract(effort_surface, occ_vect)[, 2] # 2nd column is the value
 
   # 3. Calculate Bias Score (% of points in the top 25% of effort)
-  threshold <- quantile(effort_values, 0.75, na.rm = TRUE)
+  threshold <- stats::quantile(effort_values, 0.75, na.rm = TRUE)
   high_effort_count <- sum(effort_values >= threshold, na.rm = TRUE)
   total_count <- sum(!is.na(effort_values))
   bias_score <- (high_effort_count / total_count) * 100
@@ -44,7 +44,7 @@ diagnose_sampling_bias <- function(occurrences, effort_surface) {
 
   # 5. Create Diagnostic Plot
   message("Generating diagnostic plot...")
-  terra::plot(effort_surface, main = "Sampling Bias Diagnostic", col = terrain.colors(50))
+  terra::plot(effort_surface, main = "Sampling Bias Diagnostic", col = grDevices::terrain.colors(50))
   plot(occurrences, add = TRUE, col = "red", pch = 16, cex = 0.8)
 
   # 6. Return results
