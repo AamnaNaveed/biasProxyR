@@ -28,6 +28,7 @@ You can install the development version of biasProxyR from GitHub with:
 ```r
 # install.packages("devtools")
 devtools::install_github("AamnaNaveed/biasProxyR")
+ ```
 
 ## Visualizing the Output
 
