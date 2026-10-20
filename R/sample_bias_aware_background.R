@@ -12,7 +12,7 @@
 #' @export
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #'   effort <- generate_effort_surface("Luxembourg", resolution = 1000)
 #'   bg_points <- sample_bias_aware_background(effort, n_points = 1000)
 #' }
