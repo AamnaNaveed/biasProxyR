@@ -13,6 +13,13 @@ generate_effort_surface <- function(country = "Pakistan", resolution = 10000) {
 
   # 1. Get the country border
   message("Downloading border for ", country, "...")
+  if (!requireNamespace("rnaturalearthdata", quietly = TRUE)) {
+    stop(
+      "Package 'rnaturalearthdata' is required for this function. ",
+      "Please install the 'rnaturalearthdata' package to use this function.",
+      call. = FALSE
+    )
+  }
   border <- rnaturalearth::ne_countries(country = country, scale = "medium", returnclass = "sf")
 
   # CRITICAL FIX: Reproject the border to a metric CRS (EPSG:3857)

@@ -13,10 +13,16 @@
 #' @importFrom grDevices terrain.colors
 #'
 #' @examples
-#' \dontrun{
-#'   effort <- generate_effort_surface("Luxembourg", resolution = 1000)
-#'   bg_points <- sample_bias_aware_background(effort, n_points = 100)
-#'   diagnose_sampling_bias(bg_points, effort)
+#' \donttest{
+#'   if (requireNamespace("rnaturalearthdata", quietly = TRUE) &&
+#'       requireNamespace("osmdata", quietly = TRUE) &&
+#'       curl::has_internet()) {
+#'     try({
+#'       effort <- generate_effort_surface("Luxembourg", resolution = 1000)
+#'       bg_points <- sample_bias_aware_background(effort, n_points = 100)
+#'       diagnose_sampling_bias(bg_points, effort)
+#'     }, silent = TRUE)
+#'   }
 #' }
 
 diagnose_sampling_bias <- function(occurrences, effort_surface) {

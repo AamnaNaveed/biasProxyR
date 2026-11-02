@@ -21,8 +21,14 @@ that are weighted by a sampling effort proxy surface. This cancels
 out geographic sampling bias in data-poor regions.
 }
 \examples{
-\dontrun{
-  effort <- generate_effort_surface("Luxembourg", resolution = 1000)
-  bg_points <- sample_bias_aware_background(effort, n_points = 1000)
+\donttest{
+  if (requireNamespace("rnaturalearthdata", quietly = TRUE) &&
+      requireNamespace("osmdata", quietly = TRUE) &&
+      curl::has_internet()) {
+    try({
+      effort <- generate_effort_surface("Luxembourg", resolution = 1000)
+      bg_points <- sample_bias_aware_background(effort, n_points = 1000)
+    }, silent = TRUE)
+  }
 }
 }
