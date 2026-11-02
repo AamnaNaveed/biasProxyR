@@ -14,6 +14,7 @@
 #'
 #' @examples
 #' \donttest{
+<<<<<<< HEAD
 #'   if (requireNamespace("rnaturalearthdata", quietly = TRUE) &&
 #'       requireNamespace("osmdata", quietly = TRUE) &&
 #'       curl::has_internet()) {
@@ -23,6 +24,11 @@
 #'       diagnose_sampling_bias(bg_points, effort)
 #'     }, silent = TRUE)
 #'   }
+=======
+#'   effort <- generate_effort_surface("Luxembourg", resolution = 1000)
+#'   bg_points <- sample_bias_aware_background(effort, n_points = 100)
+#'   diagnose_sampling_bias(bg_points, effort)
+>>>>>>> 72e1d7163adb1219ff9a0a8f997355ccba6000a7
 #' }
 
 diagnose_sampling_bias <- function(occurrences, effort_surface) {
