@@ -4,31 +4,24 @@
 \alias{sample_bias_aware_background}
 \title{Sample Bias-Aware Background Points}
 \usage{
-sample_bias_aware_background(effort_surface, n_points = 10000)
+sample_bias_aware_background(effort_surface, n_points = 100)
 }
 \arguments{
-\item{effort_surface}{A SpatRaster object representing sampling effort
-(e.g., from generate_effort_surface).}
+\item{effort_surface}{A SpatRaster object representing sampling effort.}
 
-\item{n_points}{Numeric. The number of background points to generate (default = 10000).}
+\item{n_points}{An integer specifying the number of background points to sample.}
 }
 \value{
 An sf object containing the sampled background points.
 }
 \description{
-Generates background points for Species Distribution Models (SDMs)
-that are weighted by a sampling effort proxy surface. This cancels
-out geographic sampling bias in data-poor regions.
+Draws background points from a sampling effort proxy surface,
+ensuring that background points are sampled in proportion to
+the estimated sampling effort.
 }
 \examples{
-\donttest{
-  if (requireNamespace("rnaturalearthdata", quietly = TRUE) &&
-      requireNamespace("osmdata", quietly = TRUE) &&
-      curl::has_internet()) {
-    try({
-      effort <- generate_effort_surface("Luxembourg", resolution = 1000)
-      bg_points <- sample_bias_aware_background(effort, n_points = 1000)
-    }, silent = TRUE)
-  }
+\dontrun{
+  effort <- generate_effort_surface("Luxembourg", resolution = 1000)
+  bg_points <- sample_bias_aware_background(effort, n_points = 100)
 }
 }

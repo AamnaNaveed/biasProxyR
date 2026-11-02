@@ -20,15 +20,9 @@ and calculates a "Bias Correlation Score" to quantify how much
 the data is skewed toward human infrastructure.
 }
 \examples{
-\donttest{
-  if (requireNamespace("rnaturalearthdata", quietly = TRUE) &&
-      requireNamespace("osmdata", quietly = TRUE) &&
-      curl::has_internet()) {
-    try({
-      effort <- generate_effort_surface("Luxembourg", resolution = 1000)
-      bg_points <- sample_bias_aware_background(effort, n_points = 100)
-      diagnose_sampling_bias(bg_points, effort)
-    }, silent = TRUE)
-  }
+\dontrun{
+  effort <- generate_effort_surface("Luxembourg", resolution = 1000)
+  bg_points <- sample_bias_aware_background(effort, n_points = 100)
+  diagnose_sampling_bias(bg_points, effort)
 }
 }

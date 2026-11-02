@@ -4,4 +4,9 @@ export(diagnose_sampling_bias)
 export(generate_effort_surface)
 export(sample_bias_aware_background)
 importFrom(grDevices,terrain.colors)
+importFrom(sf,st_as_sf)
 importFrom(stats,quantile)
+importFrom(terra,
+  crs,
+  spatSample
+)
