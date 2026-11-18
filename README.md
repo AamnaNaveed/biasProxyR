@@ -1,5 +1,10 @@
 # biasProxyR
 
+[![CRAN status](https://www.r-pkg.org/badges/version/biasProxyR)](https://CRAN.R-project.org/package=biasProxyR)
+[![CRAN downloads](https://cranlogs.r-pkg.org/badges/grand-total/biasProxyR)](https://cran.r-project.org/package=biasProxyR)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+
 **Generating Sampling Effort Proxies for Species Distribution Modeling in Data-Poor Regions.**
 
 
