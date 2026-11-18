@@ -34,7 +34,7 @@ An sf object containing the sampled background points.
   })
 #> Downloading border for Luxembourg...
 #> Downloading major road network (this may take a minute)...
-#> Waiting 14.9998712539673 seconds
+#> Waiting 14.9998407363892 seconds
 #> Error in httr2::req_perform(req) : HTTP 502 Bad Gateway.
 # }
 ```

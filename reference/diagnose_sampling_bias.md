@@ -35,7 +35,7 @@ A list containing the bias score (percentage) and a diagnostic message.
   })
 #> Downloading border for Luxembourg...
 #> Downloading major road network (this may take a minute)...
-#> Waiting 14.9997432231903 seconds
+#> Waiting 14.9997501373291 seconds
 #> Error in httr2::req_perform(req) : HTTP 502 Bad Gateway.
 # }
 ```
