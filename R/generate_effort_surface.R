@@ -4,11 +4,17 @@
 #' distance to roads to create a proxy for human sampling effort.
 #'
 #' @param country Character. Name of the country (e.g., "Pakistan").
-#' @param resolution Numeric. Output raster resolution in meters (default = 10000).
+#' @param resolution Numeric. Output raster resolution in meters.
 #'
 #' @return A SpatRaster object where higher values indicate
 #'   higher probability of human sampling effort (closer to roads).
 #' @export
+#'
+#' @examples
+#' \donttest{
+#'   # Download a low-resolution effort surface for Luxembourg
+#'   effort <- generate_effort_surface("Luxembourg", resolution = 10000)
+#' }
 generate_effort_surface <- function(country = "Pakistan", resolution = 10000) {
 
   # 1. Get the country border
@@ -20,10 +26,11 @@ generate_effort_surface <- function(country = "Pakistan", resolution = 10000) {
       call. = FALSE
     )
   }
-  border <- rnaturalearth::ne_countries(country = country, scale = "medium", returnclass = "sf")
+  border <- rnaturalearth::ne_countries(
+    country = country, scale = "medium", returnclass = "sf"
+  )
 
-  # CRITICAL FIX: Reproject the border to a metric CRS (EPSG:3857)
-  # so that our resolution is actually in meters, not degrees!
+  # Reproject the border to a metric CRS (EPSG:3857)
   border <- sf::st_transform(border, 3857)
 
   # 2. Download major roads (opq needs lat/lon for the bounding box)
@@ -31,7 +38,10 @@ generate_effort_surface <- function(country = "Pakistan", resolution = 10000) {
   bbox_latlon <- sf::st_bbox(sf::st_transform(border, 4326))
 
   roads <- osmdata::opq(bbox = bbox_latlon, timeout = 300) |>
-    osmdata::add_osm_feature(key = "highway", value = c("motorway", "trunk", "primary", "secondary")) |>
+    osmdata::add_osm_feature(
+      key = "highway",
+      value = c("motorway", "trunk", "primary", "secondary")
+    ) |>
     osmdata::osmdata_sf()
 
   road_lines <- roads$osm_lines
@@ -49,7 +59,9 @@ generate_effort_surface <- function(country = "Pakistan", resolution = 10000) {
 
   # 4. Rasterize roads
   message("Rasterizing roads...")
-  road_raster <- terra::rasterize(terra::vect(road_lines), template_raster, fun = "count", background = 0)
+  road_raster <- terra::rasterize(
+    terra::vect(road_lines), template_raster, fun = "count", background = 0
+  )
 
   # 5. Calculate distance to nearest road
   message("Calculating distance to nearest road...")
@@ -57,7 +69,7 @@ generate_effort_surface <- function(country = "Pakistan", resolution = 10000) {
 
   # Safety check: ensure roads were actually rasterized
   if (terra::global(road_presence, "sum", na.rm = TRUE)[1, 1] == 0) {
-    stop("No roads were found for this country. Check the country name or try a larger resolution.")
+    stop("No roads were found. Check country name or try larger resolution.")
   }
 
   dist_to_road <- terra::distance(road_presence, target = TRUE)

@@ -7,9 +7,9 @@
 sample_bias_aware_background(effort_surface, n_points = 100)
 }
 \arguments{
-\item{effort_surface}{A SpatRaster object representing sampling effort.}
+\item{effort_surface}{A SpatRaster of sampling effort.}
 
-\item{n_points}{An integer specifying the number of background points to sample.}
+\item{n_points}{Integer. Number of background points to sample.}
 }
 \value{
 An sf object containing the sampled background points.
@@ -20,8 +20,8 @@ ensuring that background points are sampled in proportion to
 the estimated sampling effort.
 }
 \examples{
-\dontrun{
-  effort <- generate_effort_surface("Luxembourg", resolution = 1000)
-  bg_points <- sample_bias_aware_background(effort, n_points = 100)
+\donttest{
+  effort <- generate_effort_surface("Luxembourg", resolution = 10000)
+  bg_points <- sample_bias_aware_background(effort, n_points = 10)
 }
 }

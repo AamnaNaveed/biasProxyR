@@ -9,7 +9,7 @@ diagnose_sampling_bias(occurrences, effort_surface)
 \arguments{
 \item{occurrences}{An sf object containing occurrence points.}
 
-\item{effort_surface}{A SpatRaster object representing sampling effort.}
+\item{effort_surface}{A SpatRaster of sampling effort.}
 }
 \value{
 A list containing the bias score (percentage) and a diagnostic message.
@@ -20,9 +20,9 @@ and calculates a "Bias Correlation Score" to quantify how much
 the data is skewed toward human infrastructure.
 }
 \examples{
-\dontrun{
-  effort <- generate_effort_surface("Luxembourg", resolution = 1000)
-  bg_points <- sample_bias_aware_background(effort, n_points = 100)
+\donttest{
+  effort <- generate_effort_surface("Luxembourg", resolution = 10000)
+  bg_points <- sample_bias_aware_background(effort, n_points = 10)
   diagnose_sampling_bias(bg_points, effort)
 }
 }

@@ -5,7 +5,7 @@
 #' the data is skewed toward human infrastructure.
 #'
 #' @param occurrences An sf object containing occurrence points.
-#' @param effort_surface A SpatRaster object representing sampling effort.
+#' @param effort_surface A SpatRaster of sampling effort.
 #'
 #' @return A list containing the bias score (percentage) and a diagnostic message.
 #' @export
@@ -13,15 +13,19 @@
 #' @importFrom grDevices terrain.colors
 #'
 #' @examples
-#' \dontrun{
-#'   effort <- generate_effort_surface("Luxembourg", resolution = 1000)
-#'   bg_points <- sample_bias_aware_background(effort, n_points = 100)
+#' \donttest{
+#'   effort <- generate_effort_surface("Luxembourg", resolution = 10000)
+#'   bg_points <- sample_bias_aware_background(effort, n_points = 10)
 #'   diagnose_sampling_bias(bg_points, effort)
 #' }
 diagnose_sampling_bias <- function(occurrences, effort_surface) {
   # 1. Validate inputs
-  if (!inherits(occurrences, "sf")) stop("occurrences must be an sf object.", call. = FALSE)
-  if (!inherits(effort_surface, "SpatRaster")) stop("effort_surface must be a SpatRaster.", call. = FALSE)
+  if (!inherits(occurrences, "sf")) {
+    stop("occurrences must be an sf object.", call. = FALSE)
+  }
+  if (!inherits(effort_surface, "SpatRaster")) {
+    stop("effort_surface must be a SpatRaster.", call. = FALSE)
+  }
 
   # 2. Extract effort values at occurrence points
   message("Extracting effort values at occurrence points...")
@@ -35,16 +39,23 @@ diagnose_sampling_bias <- function(occurrences, effort_surface) {
   bias_score <- (high_effort_count / total_count) * 100
 
   # 4. Print Diagnostic Message
-  message(sprintf("DIAGNOSTIC: %.1f%% of your points fall in the top 25%% most accessible areas.", bias_score))
+  message(sprintf(
+    "DIAGNOSTIC: %.1f%% of points fall in top 25%% most accessible areas.",
+    bias_score
+  ))
+
   if (bias_score > 75) {
-    message("WARNING: Your data is highly biased toward human infrastructure. Use bias-aware background sampling!")
+    message("WARNING: Data is highly biased toward human infrastructure. ",
+            "Use bias-aware background sampling!")
   } else {
-    message("NOTE: Your data shows relatively balanced spatial coverage.")
+    message("NOTE: Data shows relatively balanced spatial coverage.")
   }
 
   # 5. Create Diagnostic Plot
   message("Generating diagnostic plot...")
-  terra::plot(effort_surface, main = "Sampling Bias Diagnostic", col = grDevices::terrain.colors(50))
+  terra::plot(effort_surface,
+              main = "Sampling Bias Diagnostic",
+              col = grDevices::terrain.colors(50))
   plot(occurrences, add = TRUE, col = "red", pch = 16, cex = 0.8)
 
   # 6. Return results

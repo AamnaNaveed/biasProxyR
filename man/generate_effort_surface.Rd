@@ -9,7 +9,7 @@ generate_effort_surface(country = "Pakistan", resolution = 10000)
 \arguments{
 \item{country}{Character. Name of the country (e.g., "Pakistan").}
 
-\item{resolution}{Numeric. Output raster resolution in meters (default = 10000).}
+\item{resolution}{Numeric. Output raster resolution in meters.}
 }
 \value{
 A SpatRaster object where higher values indicate
@@ -18,4 +18,10 @@ higher probability of human sampling effort (closer to roads).
 \description{
 Downloads road data for a given country and calculates
 distance to roads to create a proxy for human sampling effort.
+}
+\examples{
+\donttest{
+  # Download a low-resolution effort surface for Luxembourg
+  effort <- generate_effort_surface("Luxembourg", resolution = 10000)
+}
 }
