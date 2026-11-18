@@ -3,7 +3,7 @@ Title: 'Sampling Effort Proxies' for 'Species Distribution Models'
 Version: 0.1.0
 Authors@R: 
     person("Aamna", "Naveed", , "naamna588@gmail.com", role = c("aut", "cre"),
-           comment = c(ORCID = "0009-0003-3371-1066"))
+           comment = c(ORCID = "0009-0001-3371-1066"))
 Description: Addresses geographic sampling bias in 'Species Distribution 
     Models' (SDMs) for data-poor regions. It generates sampling effort 
     proxies using open-source infrastructure data, allowing researchers to 
