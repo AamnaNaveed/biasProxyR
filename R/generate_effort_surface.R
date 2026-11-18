@@ -12,8 +12,9 @@
 #'
 #' @examples
 #' \donttest{
-#'   # Download a low-resolution effort surface for Luxembourg
-#'   effort <- generate_effort_surface("Luxembourg", resolution = 10000)
+#'   try({
+#'     effort <- generate_effort_surface("Luxembourg", resolution = 10000)
+#'   })
 #' }
 generate_effort_surface <- function(country = "Pakistan", resolution = 10000) {
 

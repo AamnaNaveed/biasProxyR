@@ -13,7 +13,7 @@ Description: Addresses geographic sampling bias in 'Species Distribution
     <doi:10.32614/CRAN.package.terra> and 'Pebesma' (2018) 
     <doi:10.32614/CRAN.package.sf>.
 License: MIT + file LICENSE
-URL: https://github.com/AamnaNaveed/biasProxyR, https://CRAN.R-project.org/package=biasProxyR
+URL: https://github.com/AamnaNaveed/biasProxyR, https://CRAN.R-project.org/package=biasProxyR, https://aamnanaveed.github.io/biasProxyR/
 BugReports: https://github.com/AamnaNaveed/biasProxyR/issues
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)

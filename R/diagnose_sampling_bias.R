@@ -14,9 +14,11 @@
 #'
 #' @examples
 #' \donttest{
-#'   effort <- generate_effort_surface("Luxembourg", resolution = 10000)
-#'   bg_points <- sample_bias_aware_background(effort, n_points = 10)
-#'   diagnose_sampling_bias(bg_points, effort)
+#'   try({
+#'     effort <- generate_effort_surface("Luxembourg", resolution = 10000)
+#'     bg_points <- sample_bias_aware_background(effort, n_points = 10)
+#'     diagnose_sampling_bias(bg_points, effort)
+#'   })
 #' }
 diagnose_sampling_bias <- function(occurrences, effort_surface) {
   # 1. Validate inputs

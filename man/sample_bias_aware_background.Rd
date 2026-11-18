@@ -21,7 +21,9 @@ the estimated sampling effort.
 }
 \examples{
 \donttest{
-  effort <- generate_effort_surface("Luxembourg", resolution = 10000)
-  bg_points <- sample_bias_aware_background(effort, n_points = 10)
+  try({
+    effort <- generate_effort_surface("Luxembourg", resolution = 10000)
+    bg_points <- sample_bias_aware_background(effort, n_points = 10)
+  })
 }
 }

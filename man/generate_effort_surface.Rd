@@ -21,7 +21,8 @@ distance to roads to create a proxy for human sampling effort.
 }
 \examples{
 \donttest{
-  # Download a low-resolution effort surface for Luxembourg
-  effort <- generate_effort_surface("Luxembourg", resolution = 10000)
+  try({
+    effort <- generate_effort_surface("Luxembourg", resolution = 10000)
+  })
 }
 }
